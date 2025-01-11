@@ -1,0 +1,11 @@
+{
+  "name": "cordova-plugin-brother-bluetooth-print",
+  "version": "1.0.0",
+  "cordova": {
+    "id": "cordova-plugin-brother-bluetooth-print",
+    "platforms": [
+      "android"
+    ]
+  },
+  "description": ""
+}
