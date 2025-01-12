@@ -1,30 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="brother-bluetooth-print"
-    version="1.0.0">
+        id="cordova-plugin-brother-bluetooth-print" version="1.0.0">
     <name>Brother Bluetooth Print</name>
-    <description></description>
-    <license>MIT</license>
-    <keywords></keywords>
-    <repo>https://github.com/JayJaber/cordova-plugin-brother-bluetooth-print.git</repo>
-    <issue>https://github.com/JayJaber/cordova-plugin-brother-bluetooth-print/issues</issue>
-
-    <!-- android -->
+    <description>Cordova Brother Bluetooth Print Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,brother,bluetooth,print</keywords>
+    <js-module src="www/hello.js" name="hello">
+        <clobbers target="hello" />
+    </js-module>
     <platform name="android">
-      <js-module src="www/plugin.js" name="plugin">
-        <runs/>
-
-        <!-- This is the window variable name you want, like window.MyCordovaPlugin -->
-        <clobbers target="BrotherBluetoothPrint" />
-      </js-module>
       <config-file target="res/xml/config.xml" parent="/*">
-        <feature name="BrotherBluetoothPrint">
-          <param name="android-package" value="com.example.BrotherBluetoothPrint" />
-          <param name="onload" value="true" />
+        <feature name="Hello">
+          <param name="android-package" value="com.example.plugin.Hello"/>
         </feature>
       </config-file>
-
-      <source-file src="src/android/com/example/BrotherBluetoothPrint.java" target-dir="src/com/example/" />
+      <source-file src="src/android/Hello.java" target-dir="src/com/example/plugin/"/>
     </platform>
 </plugin>

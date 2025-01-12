@@ -1,11 +1,30 @@
 {
   "name": "cordova-plugin-brother-bluetooth-print",
   "version": "1.0.0",
+  "description": "A sample for a new cordova plugin",
   "cordova": {
     "id": "cordova-plugin-brother-bluetooth-print",
     "platforms": [
-      "android"
+      "android",
+      "ios",
+      "wp7"
     ]
   },
-  "description": ""
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JayJaber/cordova-plugin-brother-bluetooth-print.git"
+  },
+  "keywords": [
+    "cordova",
+    "plugin",
+    "brother",
+    "bluetooth",
+    "print"
+  ],
+  "author": "Jay Jaber",
+  "license": "Apache-2",
+  "bugs": {
+    "url": "https://github.com/JayJaber/cordova-plugin-brother-bluetooth-print/issues"
+  },
+  "homepage": "https://github.com/JayJaber/cordova-plugin-brother-bluetooth-print"
 }
