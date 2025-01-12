@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A sample for a new cordova plugin",
   "cordova": {
-    "id": "cordova-plugin-brother-bluetooth-print",
+    "id": "brother-bluetooth-print",
     "platforms": [
       "android",
       "ios",
