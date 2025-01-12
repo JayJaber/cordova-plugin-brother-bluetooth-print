@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
-    id="my-cordova-plugin"
+    id="brother-bluetooth-print"
     version="1.0.0">
-    <name>Cordova Plugin Template</name>
+    <name>Brother Bluetooth Print</name>
     <description></description>
     <license>MIT</license>
     <keywords></keywords>
-    <repo>https://github.com/driftyco/cordova-plugin-template.git</repo>
-    <issue>https://github.com/driftyco/cordova-plugin-template/issues</issue>
+    <repo>https://github.com/JayJaber/cordova-plugin-brother-bluetooth-print.git</repo>
+    <issue>https://github.com/JayJaber/cordova-plugin-brother-bluetooth-print/issues</issue>
 
     <!-- android -->
     <platform name="android">
