@@ -22,5 +22,20 @@ public class Hello extends CordovaPlugin {
             return false;
 
         }
+
+        // if (action.equals("greet")) {
+
+        //     String name = data.getString(0);
+        //     String message = "Hello, " + name;
+        //     callbackContext.success(message);
+
+        //     return true;
+
+        // } else {
+            
+        //     return false;
+
+        // }
+        
     }
 }
