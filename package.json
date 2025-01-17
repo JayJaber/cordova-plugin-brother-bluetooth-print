@@ -1,13 +1,11 @@
 {
   "name": "cordova-plugin-brother-bluetooth-print",
   "version": "1.0.0",
-  "description": "A sample for a new cordova plugin",
+  "description": "",
   "cordova": {
     "id": "brother-bluetooth-print",
     "platforms": [
-      "android",
-      "ios",
-      "wp7"
+      "android"
     ]
   },
   "repository": {
