@@ -39,6 +39,9 @@ import com.brother.sdk.lmprinter.PrintError;
 
 import java.io.File;
 
+import com.google.gson.Gson;
+
+
 
 
 public class Hello extends CordovaPlugin {
@@ -56,12 +59,14 @@ public class Hello extends CordovaPlugin {
         }
         else if (action.equals("scan")) {
 
-            ArrayList<Channel> channels = new ArrayList<Channel>();
-
             Context context = this.cordova.getActivity().getApplicationContext();
 
-            channels = PrinterSearcher.startBluetoothSearch(context).getChannels();
-            callbackContext.success(channels.size());
+            ArrayList<Channel> printers = PrinterSearcher.startBluetoothSearch(context).getChannels();
+
+            Gson gson = new Gson();
+            String printersJSON = gson.toJson(printers);
+
+            callbackContext.success(printersJSON);
 
             // BluetoothManager bluetoothManager = context.getSystemService(BluetoothManager.class);
             // BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
@@ -88,41 +93,55 @@ public class Hello extends CordovaPlugin {
             //     }
             // }
 
-            // Channel channel = Channel.newBluetoothChannel()
             // callbackContext.success(pairedDevicesString);
 
             return true;
         }
         else if (action.equals("print")) {
+            String macAddress = data.getString(0);
+            String path = data.getString(1);
+
             Context context = this.cordova.getActivity().getApplicationContext();
             BluetoothManager bluetoothManager = context.getSystemService(BluetoothManager.class);
             BluetoothAdapter bluetoothAdapter = bluetoothManager.getAdapter();
 
-            Channel channel = Channel.newBluetoothChannel("60:E9:AA:23:E4:E0", bluetoothAdapter);
+            Channel channel = Channel.newBluetoothChannel(macAddress, bluetoothAdapter);
             
             PrinterDriverGenerateResult result = PrinterDriverGenerator.openChannel(channel);
             if (result.getError().getCode() != OpenChannelError.ErrorCode.NoError) {
                 callbackContext.error("Error - Open Channel: " + result.getError().getCode());
-                return false;
+                return true;
             }
 
+            // File dir = context.getExternalFilesDir(null);
+            // File dir = context.getFilesDir();
+            // File file = new File(dir, path);
+
+
             File dir = context.getExternalFilesDir(null);
-            File file = new File(dir, "YourImageFilename");
+            File file = new File(dir, path);
+
+
+            // callbackContext.success(file.getAbsolutePath());
+
 
             PrinterDriver printerDriver = result.getDriver();
-            PJPrintSettings printSettings = new PJPrintSettings(PrinterModel.PJ_883);
+            PJPrintSettings printSettings = new PJPrintSettings(PrinterModel.PJ_863); // PJ_883 for prod
 
             printSettings.setPaperSize(PJPaperSize.newPaperSize(PJPaperSize.PaperSize.Letter));
             printSettings.setWorkPath(dir.toString());
 
+            // PrintError printError = printerDriver.printImage(file.toString(), printSettings);
+            // PrintError printError = printerDriver.printPDF(file.getAbsolutePath(), printSettings);
 
-            PrintError printError = printerDriver.printImage(file.toString(), printSettings);
-            
+            PrintError printError = printerDriver.printPDF(file.getAbsolutePath(), printSettings);
+
             if (printError.getCode() != PrintError.ErrorCode.NoError) {
-                callbackContext.error("Error - Print Image: " + printError.getCode());
+                Gson gson = new Gson();
+                callbackContext.error("Error - Print: " + gson.toJson(printError));
             }
             else {
-                callbackContext.success("Success - Print Image");
+                callbackContext.success("Success - Print");
             }         
             
             printerDriver.closeChannel();

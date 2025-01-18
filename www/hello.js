@@ -7,7 +7,10 @@ module.exports = {
   scan: function (successCallback, errorCallback) {
     cordova.exec(successCallback, errorCallback, 'Hello', 'scan');
   },
-  print: function (successCallback, errorCallback) {
-    cordova.exec(successCallback, errorCallback, 'Hello', 'print');
+  print: function (macAddress, path, successCallback, errorCallback) {
+    cordova.exec(successCallback, errorCallback, 'Hello', 'print', [
+      macAddress,
+      path,
+    ]);
   },
 };
