@@ -1,50 +1,27 @@
-package com.example.plugin;
+package com.deltacs.bbp;
 
 import org.apache.cordova.*;
 import org.json.JSONArray;
 import org.json.JSONException;
-
 import java.util.ArrayList;
-
-import java.util.Set;
-
-
 import com.brother.sdk.lmprinter.Channel;
-
 import com.brother.sdk.lmprinter.PrinterSearcher;
-
 import android.content.Context;
-import android.content.Intent;
-
-import android.app.Activity;
-
-
 import android.bluetooth.BluetoothManager;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-
 import com.brother.sdk.lmprinter.PrinterDriverGenerateResult;
 import com.brother.sdk.lmprinter.PrinterDriverGenerator;
 import com.brother.sdk.lmprinter.OpenChannelError;
-
 import com.brother.sdk.lmprinter.PrinterDriver;
-
 import com.brother.sdk.lmprinter.PrinterModel;
-
 import com.brother.sdk.lmprinter.setting.PJPrintSettings;
 import com.brother.sdk.lmprinter.setting.PJPaperSize;
-
 import com.brother.sdk.lmprinter.PrintError;
-
-
 import java.io.File;
-
 import com.google.gson.Gson;
 
 
-
-
-public class Hello extends CordovaPlugin {
+public class BrotherBluetoothPrint extends CordovaPlugin {
 
     @Override
     public boolean execute(String action, JSONArray data, CallbackContext callbackContext) throws JSONException {
