@@ -6,7 +6,6 @@
     <license>Apache 2.0</license>
     <keywords>cordova,brother,bluetooth,print</keywords>
     <js-module src="www/BrotherBluetoothPrint.js" name="BrotherBluetoothPrint">
-        <clobbers target="BrotherBluetoothPrint" />
         <clobbers target="cordova.plugins.BrotherBluetoothPrint" />
     </js-module>
     <platform name="android">
